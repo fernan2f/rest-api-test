@@ -1,17 +1,14 @@
 const express = require('express')
 const movies = require('./movies.json')
 const crypto = require('crypto')
-// const cors = require('cors')
+const cors = require('cors')
 const {validateMovie, validatePartialMovie} = require('./schemas/movies')
 const app = express()
-// app.use(cors())
-const desiredPort = process.env.PORT ?? 3000
+app.use(cors())
+
+
 app.disable('x-powered-by')
 app.use(express.json())
-app.get('/', (req, res) => {
-
-    res.send('Hello World!')
-})
 
 app.get('/movies', (req, res) => {
     const {genre} = req.query
@@ -55,6 +52,7 @@ app.patch('/movies/:id', (req, res) => {
     res.status(404).json({success:false, message: 'Movie not found'})
 })
 
+const desiredPort = process.env.PORT ?? 3000
 
 app.listen(desiredPort, () => {
     console.log(`Server running on port http://localhost:${desiredPort}/ `)
