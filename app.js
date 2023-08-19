@@ -1,12 +1,14 @@
-const express = require('express')
-const movies = require('./movies.json')
-const crypto = require('crypto')
-const cors = require('cors')
-const {validateMovie, validatePartialMovie} = require('./schemas/movies')
+import express from 'express'
+import {readJSON} from './utils.js'
+// import movies from './movies.json' assert { type: "json" }
+import { randomUUID } from 'crypto'
+import cors from 'cors'
+import { validateMovie, validatePartialMovie } from './schemas/movies.js'
+const movies = readJSON('./movies.json')
+console.log(import.meta.url);
+
 const app = express()
 app.use(cors())
-
-
 app.disable('x-powered-by')
 app.use(express.json())
 
@@ -33,7 +35,7 @@ app.post('/movies', (req, res) => {
     if(!result.success){
         return res.status(400).json({message: JSON.parse(result.error.message)})
     }
-    const newMovie = {id:crypto.randomUUID(),...result.data}
+    const newMovie = {id:randomUUID(),...result.data}
     movies.push(newMovie)
     res.json(newMovie)
 })
