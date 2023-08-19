@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start" : "node app.js",
+    "start": "node app.js",
     "serve": "node --watch app.js"
   },
   "keywords": [],
@@ -14,6 +14,7 @@
     "extends": "standard"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "4.18.2",
     "zod": "3.21.4"
   }
