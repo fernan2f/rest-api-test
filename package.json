@@ -1,0 +1,19 @@
+{
+  "name": "solucion-cors-y-api-rest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "node --watch app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "eslintConfig": {
+    "extends": "standard"
+  },
+  "dependencies": {
+    "express": "4.18.2",
+    "zod": "3.21.4"
+  }
+}
